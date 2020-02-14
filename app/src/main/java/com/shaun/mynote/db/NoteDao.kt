@@ -11,8 +11,12 @@ interface NoteDao {
     @Query("SELECT * FROM note ORDER BY updateDate DESC")
     fun getAll(): Flowable<List<Note>>
 
+    @Query("SELECT * FROM note WHERE uid LIKE :uid")
+    fun findById(uid: Int): Note
+
     @Insert
     fun insert(vararg note: Note): Completable
+
 
     @Delete
     fun delete(note: Note): Completable

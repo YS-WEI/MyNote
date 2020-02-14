@@ -15,9 +15,12 @@ class NoteDatebaseRepository constructor(context: Context){
         noteDao = database.noteDao()
     }
 
-
     fun getAllNote() : Flowable<List<Note>> {
         return noteDao.getAll()
+    }
+
+    fun findById(uid: Int) : Note {
+        return noteDao.findById(uid)
     }
 
     fun insert(note: Note): Completable {
