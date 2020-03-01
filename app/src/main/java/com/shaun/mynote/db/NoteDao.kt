@@ -8,7 +8,7 @@ import io.reactivex.Single
 @Dao
 interface NoteDao {
 
-    @Query("SELECT * FROM note ORDER BY updateDate DESC")
+    @Query("SELECT * FROM note ORDER BY updateDate ASC")
     fun getAll(): Flowable<List<Note>>
 
     @Query("SELECT * FROM note WHERE uid LIKE :uid")

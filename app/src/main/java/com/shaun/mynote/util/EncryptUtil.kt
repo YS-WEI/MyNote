@@ -33,11 +33,9 @@ class EncryptUtil {
         this.context = context
 
         if (!keyStore.containsAlias(KEYSTORE_ALIAS)) {
-            Log.d("EncryptUtil", "ALIAS is not Exist")
             generateKey(context)
             genAESKey()
         } else {
-            Log.d("EncryptUtil", "ALIAS is Exist")
         }
     }
 
@@ -144,21 +142,17 @@ class EncryptUtil {
 
         // Generate 12 bytes iv then save to SharedPrefs
         val generated: ByteArray = secureRandom.generateSeed(12)
-        Log.d("EncryptUtil", "generated ${String(generated)}")
 //        val iv: String = Base64.encodeToString(generated, Base64.DEFAULT)
         val encryptIV = encryptRSA(generated)
-        Log.d("EncryptUtil", "encryptIV $encryptIV")
         SharedPreferencesUtil.setIV(context, encryptIV)
 
         // Encrypt AES-Key with RSA Public Key then save to SharedPrefs
         val encryptAESKey = encryptRSA(aesKey)
-        Log.d("EncryptUtil", "encryptedAESKey $encryptAESKey")
         SharedPreferencesUtil.setAESKey(context, encryptAESKey)
     }
 
     private fun getIV() :ByteArray? {
         val encryptIV = SharedPreferencesUtil.getIV(context)
-        Log.d("EncryptUtil", "encryptIV $encryptIV")
         if(!encryptIV.isNullOrEmpty()) {
             return decryptRSA(encryptIV)
         } else {
@@ -168,10 +162,8 @@ class EncryptUtil {
 
     private fun getAESKey(): SecretKeySpec? {
         val encryptedKey = SharedPreferencesUtil.getAESKey(context)
-        Log.d("EncryptUtil", "encryptedAESKey $encryptedKey")
         if(!encryptedKey.isNullOrEmpty()) {
             val aesKey = decryptRSA(encryptedKey)
-            Log.d("EncryptUtil", "aesKey $aesKey")
             return SecretKeySpec(aesKey, AES_MODE)
         } else {
            return null

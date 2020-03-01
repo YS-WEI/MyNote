@@ -8,11 +8,9 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.shaun.mynote.R
 import com.shaun.mynote.db.Note
-import com.shaun.mynote.util.EncryptUtil
 
 
-class NoteGridViewAdapter(context: Context): BaseAdapter() {
-    private var encryptUtil: EncryptUtil = EncryptUtil(context)
+class NoteGridViewAdapter(): BaseAdapter() {
     var mList: List<Note>? = null
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -23,8 +21,8 @@ class NoteGridViewAdapter(context: Context): BaseAdapter() {
 
         val note = mList?.get(position)
         if(note != null) {
-            val title = encryptUtil.decrypt(note.title)
-            val content = encryptUtil.decrypt(note.content)
+            val title = note.title
+            val content = note.content
             titleText.text = title
             contentText.text = content
         } else {
@@ -59,6 +57,8 @@ class NoteGridViewAdapter(context: Context): BaseAdapter() {
 
         mList = list
         notifyDataSetChanged()
+
     }
+
 
 }

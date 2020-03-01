@@ -1,18 +1,18 @@
 package com.shaun.mynote
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import com.shaun.mynote.db.Note
 import com.shaun.mynote.util.AlertUtil
 import com.shaun.mynote.viewmodel.EditNoteViewModel
+
 
 class EditActivity : AppCompatActivity() {
     companion object {
@@ -144,4 +144,5 @@ class EditActivity : AppCompatActivity() {
         titleEdit.setText(note.title, TextView.BufferType.EDITABLE)
         contentEdit.setText(note.content, TextView.BufferType.EDITABLE)
     }
+
 }

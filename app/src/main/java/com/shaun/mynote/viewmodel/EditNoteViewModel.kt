@@ -10,7 +10,11 @@ import com.shaun.mynote.db.NoteDatebaseRepository
 import com.shaun.mynote.util.EncryptUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import java.util.*
 
 class EditNoteViewModel(context: Context) : ViewModel() {
@@ -36,56 +40,64 @@ class EditNoteViewModel(context: Context) : ViewModel() {
     }
 
     fun insertNote(title : String, content: String, onComplete: () -> Unit) {
-
-        val calendar = Calendar.getInstance()
-        val newNote = Note(
+        CoroutineScope(IO).launch {
+            val calendar = Calendar.getInstance()
+            val newNote = Note(
                 title = encryptUtil.encrypt(title),
                 content = encryptUtil.encrypt(content),
                 createDate = calendar.time.toString(),
                 updateDate = calendar.time.toString()
             )
 
-        val disposable = repository.insert(newNote)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                messageLiveDate.value = "新增成功"
-                onComplete()
-            }, { messageLiveDate.value = "新增失敗" })
+            val disposable = repository.insert(newNote)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    messageLiveDate.value = "新增成功"
+                    onComplete()
+                }, { messageLiveDate.value = "新增失敗" })
 
-        compositeDisposable.add(disposable)
+            compositeDisposable.add(disposable)
+
+        }
     }
 
     fun updateNote(note : Note, onComplete: () -> Unit) {
-        val calendar = Calendar.getInstance()
-        val encNote = note.copy(
-            title = encryptUtil.encrypt(note.title),
-            content = encryptUtil.encrypt(note.content),
-            updateDate = calendar.time.toString()
-        )
+        CoroutineScope(IO).launch {
+            val calendar = Calendar.getInstance()
+            val encNote = note.copy(
+                title = encryptUtil.encrypt(note.title),
+                content = encryptUtil.encrypt(note.content),
+                updateDate = calendar.time.toString()
+            )
 
-        val disposable = repository.update(encNote)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                messageLiveDate.value = "儲存成功"
-                onComplete()
-            }, { messageLiveDate.value = "儲存失敗" })
+            val disposable = repository.update(encNote)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    messageLiveDate.value = "儲存成功"
+                    onComplete()
+                }, { messageLiveDate.value = "儲存失敗" })
 
-        compositeDisposable.add(disposable)
+            compositeDisposable.add(disposable)
+        }
     }
 
     fun deleteNote(note : Note, onComplete: () -> Unit) {
-        val disposable = repository.delete(note)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                messageLiveDate.value = "刪除成功"
-                onComplete()
-            }, { messageLiveDate.value = "刪除失敗" })
+        CoroutineScope(IO).launch {
+            val disposable = repository.delete(note)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    messageLiveDate.value = "刪除成功"
+                    onComplete()
+                }, { messageLiveDate.value = "刪除失敗" })
+            compositeDisposable.add(disposable)
+        }
 
 
-        compositeDisposable.add(disposable)
+
+
     }
 
     fun getNote(): LiveData<Note> {

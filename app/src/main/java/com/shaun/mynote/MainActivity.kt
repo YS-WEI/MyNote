@@ -1,10 +1,11 @@
 package com.shaun.mynote
 
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.GridView
 import android.widget.Toast
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        adapter = NoteGridViewAdapter(this)
+        adapter = NoteGridViewAdapter()
 
         val appLifecycleObserver = AppLifecycleObserver(object:
             AppLifecycleObserver.CallbackListener {
@@ -72,6 +73,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
+
         if(!isAuthentication) {
             checkBiometric()
         }
@@ -138,11 +144,12 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setViewModel() {
         viewModel = MainViewModel(this)
-
+        val alert = AlertUtil.showProgressBar(this, R.string.text_loading)
+        alert.show()
         viewModel.getNoteList().observe(this, Observer {
-            Log.d("Text", "xxx : $it")
             adapter.updateList(it)
             noteList = it
+            alert.dismiss()
         })
 
         viewModel.getMessage().observe(this, Observer {
@@ -153,8 +160,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val gridOnItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id -> run{
-        Log.d("OnItemClickListener", "" + position + "")
-
         val note = noteList.getOrNull(position)
         if(note != null) {
             val intent = Intent(this, EditActivity::class.java)
