@@ -1,11 +1,9 @@
-package com.siang.wei.mybookmark
+package com.shaun.mynote.db
 
 import android.content.Context
-import com.shaun.mynote.db.Note
-import com.siang.wei.mybookmark.db.AppDatabase
-import com.siang.wei.mybookmark.db.NoteDao
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 class NoteDatebaseRepository constructor(context: Context){
 
@@ -19,7 +17,7 @@ class NoteDatebaseRepository constructor(context: Context){
         return noteDao.getAll()
     }
 
-    fun findById(uid: Int) : Note {
+    fun findById(uid: Int) : Single<Note> {
         return noteDao.findById(uid)
     }
 

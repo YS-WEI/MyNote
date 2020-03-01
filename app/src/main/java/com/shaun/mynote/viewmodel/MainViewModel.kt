@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shaun.mynote.db.Note
-import com.siang.wei.mybookmark.NoteDatebaseRepository
+import com.shaun.mynote.db.NoteDatebaseRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -33,26 +33,7 @@ class MainViewModel(context: Context) : ViewModel() {
 
     }
 
-    fun insertNote(note : Note) {
-        val disposable = repository.insert(note)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ messageLiveDate.value = "新增成功" }, { messageLiveDate.value = "新增失敗" })
-
-        compositeDisposable.add(disposable)
-    }
-
-    fun updateNote(note : Note) {
-
-        val disposable = repository.update(note)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ messageLiveDate.value = "儲存成功" }, { messageLiveDate.value = "儲存失敗" })
-
-        compositeDisposable.add(disposable)
-    }
-
-    fun deleteNote(note : Note) {
+     fun deleteNote(note : Note) {
         val disposable = repository.delete(note)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

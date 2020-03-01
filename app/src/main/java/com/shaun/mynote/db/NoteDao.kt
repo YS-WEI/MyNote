@@ -1,9 +1,9 @@
-package com.siang.wei.mybookmark.db
+package com.shaun.mynote.db
 
 import androidx.room.*
-import com.shaun.mynote.db.Note
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface NoteDao {
@@ -12,7 +12,7 @@ interface NoteDao {
     fun getAll(): Flowable<List<Note>>
 
     @Query("SELECT * FROM note WHERE uid LIKE :uid")
-    fun findById(uid: Int): Note
+    fun findById(uid: Int): Single<Note>
 
     @Insert
     fun insert(vararg note: Note): Completable

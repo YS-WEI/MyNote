@@ -14,9 +14,27 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../shaunKey.jks")
+            storePassword "123456"
+            keyAlias "Shaun Studio"
+            keyPassword "123456"
+        }
+
+        debug {
+            storeFile file("../shaunKey.jks")
+            storePassword "123456"
+            keyAlias "Shaun Studio"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -31,10 +49,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "androidx.cardview:cardview:1.0.0"
 
-
-   /**
-        *  lifecycle Library
+    /**
+     *  lifecycle Library
      */
 
     def lifecycle_version = "2.2.0"
@@ -53,7 +71,7 @@ dependencies {
     // Annotation processor
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     // optional - ReactiveStreams support for LiveData
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
@@ -61,13 +79,14 @@ dependencies {
     // optional - Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
 
-   /**
+    /**
      *  Room Library
      */
     def room_version = "2.2.3"
 
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    kapt  "androidx.room:room-compiler:$room_version"
+    // For Kotlin use kapt instead of annotationProcessor
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"

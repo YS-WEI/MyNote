@@ -1,4 +1,5 @@
-package com.siang.wei.mybookmark.db
+package com.shaun.mynote.db
+
 
 class DatabaseKeys {
     companion object {

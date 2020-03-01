@@ -1,33 +1,41 @@
 package com.shaun.mynote.viewmodel
 
-import EncryptUtil
+
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shaun.mynote.db.Note
-import com.siang.wei.mybookmark.NoteDatebaseRepository
+import com.shaun.mynote.db.NoteDatebaseRepository
+import com.shaun.mynote.util.EncryptUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 class EditNoteViewModel(context: Context) : ViewModel() {
-
-    val encryptUtil = EncryptUtil(context)
+    private var encryptUtil: EncryptUtil =EncryptUtil(context)
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
     private val repository: NoteDatebaseRepository = NoteDatebaseRepository(context)
     private val noteLiveDate : MutableLiveData<Note> = MutableLiveData()
 
     private val messageLiveDate : MutableLiveData<String> = MutableLiveData()
-    fun loadNote(uid: Int) {
-        val note = repository.findById(uid)
 
-        noteLiveDate.value = note.copy(title = encryptUtil.decrypt(note.title) ?: "",
-            content = encryptUtil.decrypt(note.content) ?: "")
+    fun loadNote(uid: Int) {
+        val disposable = repository.findById(uid).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                noteLiveDate.value = it.copy(title = encryptUtil.decrypt(it.title) ?: "",
+                    content = encryptUtil.decrypt(it.content) ?: "")
+            },{
+                messageLiveDate.value = "讀取資料失敗"
+            })
+
+
+        compositeDisposable.add(disposable)
     }
 
-    fun insertNote(title : String, content: String) {
+    fun insertNote(title : String, content: String, onComplete: () -> Unit) {
 
         val calendar = Calendar.getInstance()
         val newNote = Note(
@@ -40,12 +48,15 @@ class EditNoteViewModel(context: Context) : ViewModel() {
         val disposable = repository.insert(newNote)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ messageLiveDate.value = "新增成功" }, { messageLiveDate.value = "新增失敗" })
+            .subscribe({
+                messageLiveDate.value = "新增成功"
+                onComplete()
+            }, { messageLiveDate.value = "新增失敗" })
 
         compositeDisposable.add(disposable)
     }
 
-    fun updateNote(note : Note) {
+    fun updateNote(note : Note, onComplete: () -> Unit) {
         val calendar = Calendar.getInstance()
         val encNote = note.copy(
             title = encryptUtil.encrypt(note.title),
@@ -56,16 +67,22 @@ class EditNoteViewModel(context: Context) : ViewModel() {
         val disposable = repository.update(encNote)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ messageLiveDate.value = "儲存成功" }, { messageLiveDate.value = "儲存失敗" })
+            .subscribe({
+                messageLiveDate.value = "儲存成功"
+                onComplete()
+            }, { messageLiveDate.value = "儲存失敗" })
 
         compositeDisposable.add(disposable)
     }
 
-    fun deleteNote(note : Note) {
+    fun deleteNote(note : Note, onComplete: () -> Unit) {
         val disposable = repository.delete(note)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ messageLiveDate.value = "刪除成功" }, { messageLiveDate.value = "刪除失敗" })
+            .subscribe({
+                messageLiveDate.value = "刪除成功"
+                onComplete()
+            }, { messageLiveDate.value = "刪除失敗" })
 
 
         compositeDisposable.add(disposable)

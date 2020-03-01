@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ldr_color_b_opacity_50"
+    tools:context=".EditActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/x3">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/ldr_color_red_opacity_60"
+            app:cardCornerRadius="8dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Back"/>
+
+                <Button
+                    android:id="@+id/button_recover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/button_delete"
+                    android:text="Recover"/>
+
+                <Button
+                    android:id="@+id/button_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/button_save"
+                    android:text="Delete"/>
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Save"/>
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/card_view_top_bar">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/x2"
+                android:backgroundTint="@color/ldr_color_w_opacity_80"
+                app:cardCornerRadius="8dp">
+                <EditText
+                    android:id="@+id/edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="@dimen/x3"
+                    android:background="@android:color/transparent"
+                    android:hint="標題"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:ems="28" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/card_view_title"
+                android:layout_alignParentBottom="true"
+                android:backgroundTint="@color/ldr_color_w_opacity_80"
+                app:cardCornerRadius="8dp" >
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+                    <EditText
+                        android:id="@+id/edit_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/x3"
+                        android:background="@android:color/transparent"
+                        android:ems="20"
+                        android:gravity="top"
+                        android:hint="內容"
+                        android:inputType="textMultiLine" />
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,5 @@
+package com.shaun.mynote.util
+
 import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
@@ -7,7 +9,6 @@ import android.security.keystore.KeyProperties
 import android.util.Base64
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.shaun.mynote.util.SharedPreferencesUtil
 import java.math.BigInteger
 import java.security.*
 import java.util.*
