@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ldr_color_b_opacity_50"
+    android:background="@color/main_view_background"
     tools:context=".MainActivity">
 
     <GridView
@@ -16,17 +16,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_add"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/icon_add"
-            android:tint="@color/ldr_color_green_lightest_02"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-          />
+            android:layout_margin="@dimen/x4"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@color/color_white"
+            android:backgroundTint="@color/color_green_lighter"
+            />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

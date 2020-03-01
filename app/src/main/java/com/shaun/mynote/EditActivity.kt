@@ -7,8 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import com.shaun.mynote.db.Note
+import com.shaun.mynote.util.AlertUtil
 import com.shaun.mynote.viewmodel.EditNoteViewModel
 
 class EditActivity : AppCompatActivity() {
@@ -16,20 +19,20 @@ class EditActivity : AppCompatActivity() {
         const val EXTRA_NOTE_ID = "note_id"
     }
 
-    private val backButton: Button by lazy {
-        this.findViewById<Button>(R.id.button_back)
+    private val backButton: CardView by lazy {
+        this.findViewById<CardView>(R.id.button_back)
     }
 
-    private val saveButton: Button by lazy {
-        this.findViewById<Button>(R.id.button_save)
+    private val saveButton: CardView by lazy {
+        this.findViewById<CardView>(R.id.button_save)
     }
 
-    private val deleteButton: Button by lazy {
-        this.findViewById<Button>(R.id.button_delete)
+    private val deleteButton: CardView by lazy {
+        this.findViewById<CardView>(R.id.button_delete)
     }
 
-    private val recoverButton: Button by lazy {
-        this.findViewById<Button>(R.id.button_recover)
+    private val recoverButton: CardView by lazy {
+        this.findViewById<CardView>(R.id.button_recover)
     }
 
 
@@ -44,6 +47,8 @@ class EditActivity : AppCompatActivity() {
     private lateinit var viewModel: EditNoteViewModel
     private var noteId:Int? = null
     private var savedNote: Note? = null
+
+    private var alert: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,17 +70,22 @@ class EditActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             val title = titleEdit.text.toString()
             val content = contentEdit.text.toString()
-
+            alert = AlertUtil.showProgressBar(this, R.string.text_loading_save)
+            alert?.show()
             if(noteId != null && savedNote != null) {
                 val newNote = savedNote!!.copy(
                     title = title,
                     content = content
                 )
                 viewModel.updateNote(newNote) {
+                    alert?.dismiss()
+                    alert = null
                     finish()
                 }
             } else {
                 viewModel.insertNote(title, content) {
+                    alert?.dismiss()
+                    alert = null
                     finish()
                 }
             }
@@ -86,7 +96,11 @@ class EditActivity : AppCompatActivity() {
 
             deleteButton.setOnClickListener {
                 if(savedNote != null) {
+                    alert = AlertUtil.showProgressBar(this, R.string.text_loading_delete)
+                    alert?.show()
                     viewModel.deleteNote(savedNote!!) {
+                        alert?.dismiss()
+                        alert = null
                         finish()
                     }
                 }
@@ -94,6 +108,7 @@ class EditActivity : AppCompatActivity() {
             recoverButton.setOnClickListener {
                 if(savedNote != null) {
                     inputNoteToView(savedNote!!)
+                    Toast.makeText(this, "還原內容", Toast.LENGTH_LONG).show()
                 }
             }
         } else {

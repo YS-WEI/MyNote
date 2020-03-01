@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MyNote</string>
+    <string name="app_name">我的記事本</string>
+
+    <string name="text_loading_save">儲存中...</string>
+    <string name="text_loading_delete">刪除中...</string>
+
+    <string name="button_retry">再試一次</string>
+    <string name="button_close">關閉</string>
 </resources>

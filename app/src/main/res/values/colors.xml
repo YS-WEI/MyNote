@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="ldr_colorBackground">#FF202020</color>
+    <color name="main_view_background">#A6ffffff</color>
+    <color name="card_item_background">#fff8d9</color>
 
-    <color name="ldr_color_gray_dark_trend_fill_text">#515151</color>
-
-    <!--Variable_primary_colors-->
-    <color name="ldr_color_accent_lighter">#f6cb20</color>
-    <color name="ldr_color_accent_light">#f5a623</color>
-    <color name="ldr_color_accent">#ff9200</color>
-    <color name="ldr_color_accent_light_opacity_20">#33f5a623</color>
-    <color name="ldr_color_accent_light_opacity_60">#99f5a623</color>
-    <color name="ldr_color_accent_opacity_30">#4dff9200</color>
-    <color name="ldr_color_white">#ffffff</color>
-    <color name="ldr_color_black">#000000</color>
     <color name="ldr_color_b_opacity_05">#0D000000</color>
     <color name="ldr_color_b_opacity_10">#1A000000</color>
     <color name="ldr_color_b_opacity_15">#26000000</color>
@@ -37,186 +27,12 @@
     <color name="ldr_color_w_opacity_70">#B3ffffff</color>
     <color name="ldr_color_w_opacity_80">#CCffffff</color>
     <color name="ldr_color_w_opacity_90">#E6ffffff</color>
-    <color name="ldr_color_gray_lightest">#f0f1f3</color>
-    <color name="ldr_color_gray_lighter">#d8d8d8</color>
-    <color name="ldr_color_gray_light">#c4c4c4</color>
-    <color name="ldr_color_gray_02">#9e9e9e</color>
-    <color name="ldr_color_gray_01">#909192</color>
-    <color name="ldr_color_gray_dark">#777777</color>
-    <color name="ldr_color_gray_dark_01">#555555</color>
-    <color name="ldr_color_gray_dark_01_opacity_90">#e6555555</color>
-    <color name="ldr_color_gray_darker">#3c3c3c</color>
-    <color name="ldr_color_gray_darkest_01">#292929</color>
-    <color name="ldr_color_gray_darkest_02">#232323</color>
-    <color name="ldr_color_gray_darkest_03">#171717</color>
-    <color name="ldr_color_red_draw_line">#FF0000</color>
-    <color name="ldr_color_red_light">#ea5858</color>
-    <color name="ldr_color_red">#fe0000</color>
-    <color name="ldr_color_red_dark">#bc0000</color>
-    <color name="ldr_color_red_darker">#5e0100</color>
-    <color name="ldr_color_red_opacity_30">#4dfe0000</color>
-    <color name="ldr_color_blue_light">#4668ff</color>
-    <color name="ldr_color_blue">#0200e1</color>
-    <color name="ldr_color_blue_dark">#020081</color>
-    <color name="ldr_color_blue_opacity_30">#4d0200e1</color>
-    <color name="ldr_color_steel_blue">#135073</color>
-    <color name="ldr_color_green_lightest_02">#97bf42</color>
-    <color name="ldr_color_green_lightest_01">#38b737</color>
-    <color name="ldr_color_green_lighter">#249222</color>
-    <color name="ldr_color_green">#1e8864</color>
-    <color name="ldr_color_green_dark">#114a37</color>
 
-    <color name="ldr_color_red_opacity_60">#991e8864</color>
-    <color name="ldr_color_blue_opacity_60">#99135073</color>
-
-
-
-    <!--Variable_secondary_colors-->
-    <color name="ldr_color_commission_lighter">#02a961</color>
-    <color name="ldr_color_commission_light">#1e8864</color>
-    <color name="ldr_color_commission">#009555</color>
-    <color name="ldr_color_commission_opacity_60">#99009555</color>
-    <color name="ldr_color_commission_dark">#0a5f3f</color>
-    <color name="ldr_color_commission_darker">#114a37</color>
-    <color name="ldr_color_commission_darkerest">#0f3f2d</color>
-    <!--<color name="ldr_color_commission_back_ground">rgba(0, 149, 85, 0.2)</color>-->
-    <color name="ldr_color_commission_switch_button_dark">#4Dffffff</color>
-    <color name="ldr_color_no_commission_lighter">#9e6cae</color>
-    <color name="ldr_color_no_commission_light">#876e98</color>
-    <color name="ldr_color_no_commission">#855b92</color>
-    <color name="ldr_color_no_commission_opacity_60">#99855b92</color>
-    <color name="ldr_color_no_commission_dark">#593b63</color>
-    <color name="ldr_color_no_commission_darker">#422f50</color>
-    <color name="ldr_color_no_commission_darkerest">#39264c</color>
-    <!--<color name="ldr_color_no_commission_back_ground">rgba(133, 91, 146, 0.3)</color>-->
-    <color name="ldr_color_tie">@color/ldr_color_green_lightest_01</color>
-    <color name="ldr_color_player">@color/ldr_color_blue</color>
-    <color name="ldr_color_banker">@color/ldr_color_red</color>
-    <color name="ldr_color_box_shadow">#CC000000</color>
-    <color name="ldr_color_chip_nav_item_start">#3e3e3e</color>
-    <color name="ldr_color_chip_nav_item_end">#6e6e6e</color>
-    <color name="ldr_color_chip_nav_item_activated_start">#526824</color>
-    <color name="ldr_color_chip_nav_item_activated_end">#93ba40</color>
-    <color name="ldr_color_alert_border_top">#4dff9200</color>
-    <color name="ldr_color_text_shadow">#CC000000</color>
-    <color name="ldr_color_text_shadow_white">#1Affffff</color>
-    <color name="ldr_virtual_result_line">#1A000000</color>
-    <color name="ldr_color_betting_summary_background">#292929</color>
-    <color name="ldr_color_betting_summary_item_background">#3c3c3c</color>
-
-
-    <!--Variable_rertiary_colors-->
-    <color name="ldr_color_menu_table_commission">@color/ldr_color_commission_opacity_60</color>
-    <color name="ldr_color_menu_table_no_commission">@color/ldr_color_no_commission_opacity_60</color>
-    <color name="ldr_color_trend_background">#fff8d9</color>
-    <color name="ldr_color_trend_line">#e7e2cc</color>
-    <color name="ldr_color_trend_highlight">#f9c76c</color>
-    <color name="ldr_color_trend_gray">#777777</color>
-    <!--// // <color name="ldr_color_game_trend_pattern_none_commission">rgba(color_commission, .5)</color>-->
-    <!--// // <color name="ldr_color_game_trend_pattern_none_no_commission">rgba(color_no_commission, .5)</color>-->
-    <!--// <color name="ldr_color_lock_background">rgba(0, 0, 0, .1)</color>-->
-    <color name="ldr_color_roulette_hot_cold_table_blue">#1a6e9f</color>
-    <color name="ldr_color_roulette_hot_cold_table_red">#910200</color>
-    <color name="ldr_color_roulette_border">#66bf99</color>
-    <!--// <color name="ldr_color_roulette_icon_black">rgba(0, 0, 0, .5)</color>-->
-    <!--// // <color name="ldr_color_roulette_icon_red">rgba(colorRed, .5)</color>-->
-    <color name="ldr_color_roulette_background_black">#0a5032</color>
-    <color name="ldr_color_roulette_background_red">#8b503e</color>
-    <color name="ldr_color_roulette_background_zero">#14a94f</color>
-    <color name="ldr_color_betting_item_black_cloded">#004326</color>
-    <color name="ldr_color_betting_item_red_cloded">#3f4326</color>
-    <color name="ldr_color_setting_primary">#729334</color>
-    <color name="ldr_color_setting_primary_light">#97bf42</color>
-    <color name="ldr_color_setting_primary_lighter">#c7d4ae</color>
-    <!--// <color name="ldr_color_setting_secondary">rgba(0, 0, 0, .1)</color>-->
-    <!--// <color name="ldr_color_betting_options_button_background1">#009555</color>-->
-    <!--// <color name="ldr_color_betting_options_button_background2">#0a5f3f</color>-->
-    <!--// <color name="ldr_color_betting_options_button_nc_background1">#855b92</color>-->
-    <!--// <color name="ldr_color_betting_options_button_nc_background2">#593b63</color>-->
-    <!--// <color name="ldr_color_button_player">#0200e1</color>-->
-    <!--// <color name="ldr_color_button_player_dark">#020081</color>-->
-    <!--// <color name="ldr_color_button_banker">#fe0000</color>-->
-    <!--// <color name="ldr_color_button_banker_dark">#bc0000</color>-->
-    <!--// <color name="ldr_color_button_tie">#38b737</color>-->
-    <color name="ldr_color_button_tie_dark">#218920</color>
-    <color name="ldr_color_button_confirm">#69aa08</color>
-    <color name="ldr_color_button_confirm_dark">#436e02</color>
-    <color name="ldr_color_button_cancel">#af2d2d</color>
-    <color name="ldr_color_button_cancel_dark">#691515</color>
-    <color name="ldr_color_button_rebet">#1c8db2</color>
-    <color name="ldr_color_button_rebet_dark">#0f5a72</color>
-    <!--// <color name="ldr_color_button_disable">#555555</color>-->
-    <!--// <color name="ldr_color_button_text">#d8d8d8</color>-->
-    <color name="ldr_color_button_text_secondary">#91f000</color>
-    <!--// <color name="ldr_color_button_text_disable">#3c3c3c</color>-->
-    <color name="ldr_color_betting_pattern_commission">#0096be41</color>
-    <color name="ldr_color_betting_pattern_no_commission">#00df7dac</color>
-    <color name="ldr_color_betting_background">#009555</color>
-    <color name="ldr_color_betting_secondary_background">#855b92</color>
-    <color name="ldr_color_betting_item_background">#33000000</color>
-    <color name="ldr_color_betting_item_background1">#007744</color>
-    <color name="ldr_color_betting_item_closed_background">#66000000</color>
-    <color name="ldr_color_betting_item_closed_background_1">#005933</color>
-    <!--// <color name="ldr_color_betting_item_won_background">rgba(255, 255, 255, .2)</color>-->
-    <color name="ldr_color_betting_item_won_background">#4dffffff</color>
-    <!--// <color name="ldr_color_betting_item_won_background1">#31a976</color>-->
-    <!--// <color name="ldr_color_percentage_donut_base_border">#217439</color>-->
-    <!--// // <color name="ldr_color_percentage_donut_base_border_dark"> darken(color_percentage_donut_base_border, 8%)</color>-->
-    <!--// <color name="ldr_color_percentage_donut_base_secondary_border">#73486f</color>-->
-    <!--// // <color name="ldr_color_percentage_donut_base_secondary_border_dark"> darken(color_percentage_donut_base_secondary_border, 10%)</color>-->
-    <color name="ldr_color_betting_item_name_text">#ffffff</color>
-    <color name="ldr_color_betting_item_name_sub_text">#99ffffff</color>
-    <!--// <color name="ldr_color_betting_item_border">#ffffff</color>-->
-    <color name="ldr_color_betting_item_odds_text">#99ffffff</color>
-    <color name="ldr_color_betting_item_closed_text">#33ffffff</color>
-    <color name="ldr_color_betting_item_closed_text_player">#4d0200e1</color>
-    <color name="ldr_color_betting_item_closed_text_banker">#4dfe0000</color>
-    <color name="ldr_color_countdown_timer_background_base">#3c3c3c</color>
-    <color name="ldr_color_countdown_timer_background_a">#00a600</color>
-    <color name="ldr_color_countdown_timer_background_b">#ff7f00</color>
-    <color name="ldr_color_countdown_timer_background_c">#fe0000</color>
-    <!--// <color name="ldr_color_hot_table_bar_background">#232323</color>-->
-    <color name="ldr_color_overlay_light_background">#99000000</color>
-    <color name="ldr_color_overlay_background">#E6000000</color>
-    <!--// <color name="ldr_color_overlay_dark_background">#000000</color>-->
-    <!--// <color name="ldr_color_sub_nav_item_text">rgba(255, 255, 255, .5)</color>-->
-    <!--// <color name="ldr_color_dice_background">#ffffff</color>-->
-    <!--// <color name="ldr_color_dice_point_primary">#000000</color>-->
-    <!--// <color name="ldr_color_dice_point_secondary">#fe0000</color>-->
-    <!--// <color name="ldr_color_dice_closed_background">#669b84</color>-->
-    <!--// <color name="ldr_color_dice_closed_point_primary">#00351e</color>-->
-    <!--// <color name="ldr_color_dice_closed_point_secondary">#66351e</color>-->
-    <color name="ldr_color_paralay_bet_button_text">#fefac9</color>
-    <!--// <color name="ldr_color_paralay_bet_button_text_activated">#f5a623</color>-->
-    <!--// <color name="ldr_color_parlay_bet_circle_background">rgba(0, 0, 0, .5)</color>-->
-    <!--// <color name="ldr_color_parlay_bet_circle_text">rgba(255, 255, 255, .2)</color>-->
-    <!--// // <color name="ldr_colorstatistics_bar_won_first">rgba(color_accent_light, .6)</color>-->
-    <!--// <color name="ldr_color_statistics_hot_background">#5_e0100</color>-->
-    <!--// // <color name="ldr_color_statistics_hot_background_light"> lighten(color_statistics_hot_background, 10%)</color>-->
-    <!--// <color name="ldr_color_statistics_cold_background">#135073</color>-->
-    <!--// // <color name="ldr_color_statistics_cold_background_light"> lighten(color_statistics_cold_background, 10%)</color>-->
-    <!--// <color name="ldr_color_menu_wrapper_background">#3c3c3c</color>-->
-    <color name="ldr_color_lobby_table_overlay">#E6000000</color>
-    <color name="ldr_color_select_page_baccarat">#009eaa</color>
-    <color name="ldr_color_select_page_sicbo">#c51818</color>
-    <color name="ldr_color_select_page_roulette">#e69110</color>
-    <color name="ldr_color_select_page_all_table">#298173</color>
-    <color name="ldr_color_select_page_bull_bull">#4f0484</color>
-
-    <!--Variable_quaternary_colors-->
-    <color name="ldr_color_icon_bull_head_white">#ffffff</color>
-    <color name="ldr_color_icon_bull_head_banker">#fe0000</color>
-    <color name="ldr_color_icon_bull_head_player">#0200e1</color>
-    <color name="ldr_color_icon_bull_head_black">#000000</color>
-    <color name="ldr_color_icon_bull_head_circle_black">#c4c4c4</color>
-    <color name="ldr_color_icon_bull_head_betting_item_background1">#007744</color>
-    <color name="ldr_color_icon_bull_head_circle_betting_item_background1">#65ad8e</color>
-    <color name="ldr_color_icon_bull_head_betting_item_closed_background1">#005933</color>
-    <color name="ldr_color_icon_bull_head_circle_betting_item_closed_background1">#3e7a5c</color>
-    <color name="ldr_color_icon_bull_head_circle_opacity">@color/ldr_color_b_opacity_20</color>
-    <color name="ldr_color_icon_bull_head_circle_border">#ffffff</color>
-
-    <!--tool area color-->
-    <color name="ldr_button_tool_active_background">#33f5a623</color>
+    <color name="color_steel_blue_o_60">#99135073</color>
+    <color name="color_green_lightest_02">#97bf42</color>
+    <color name="color_red">#fe0000</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_black">#FF000000</color>
+    <color name="color_green_lighter">#249222</color>
 
 </resources>

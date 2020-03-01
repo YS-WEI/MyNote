@@ -5,67 +5,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ldr_color_b_opacity_50"
+    android:background="@color/main_view_background"
     tools:context=".EditActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/x3">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_top_bar"
+        <RelativeLayout
+            android:id="@+id/layout_top_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/ldr_color_red_opacity_60"
-            app:cardCornerRadius="8dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="@dimen/x3"
+            android:orientation="horizontal">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:orientation="horizontal">
+                android:layout_alignParentLeft="true"
+                app:cardCornerRadius="1000dp">
 
-                <Button
-                    android:id="@+id/button_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:text="Back"/>
-
-                <Button
-                    android:id="@+id/button_recover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/button_delete"
-                    android:text="Recover"/>
-
-                <Button
-                    android:id="@+id/button_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/button_save"
-                    android:text="Delete"/>
-
-                <Button
-                    android:id="@+id/button_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="Save"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/x2"
+                    android:src="@drawable/ic_go_back"
+                    android:tint="@color/color_black"/>
+            </androidx.cardview.widget.CardView>
 
 
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/button_recover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/button_delete"
+                android:layout_marginHorizontal="@dimen/x2"
+                app:cardCornerRadius="1000dp"
+                app:cardBackgroundColor="@color/color_green_lightest_02">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/x2"
+                    android:src="@drawable/ic_restore"
+                    android:tint="@color/color_white"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/button_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/x2"
+                android:layout_toLeftOf="@id/button_save"
+                app:cardCornerRadius="1000dp"
+                app:cardBackgroundColor="@color/color_red">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/x3"
+                    android:src="@drawable/ic_delete"
+                    android:tint="@color/color_white"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/x2"
+                android:layout_alignParentRight="true"
+                app:cardCornerRadius="1000dp"
+                app:cardBackgroundColor="@color/color_steel_blue_o_60">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/x3"
+                    android:src="@drawable/ic_save"
+                    android:tint="@color/color_white" />
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/card_view_top_bar">
+            android:layout_below="@id/layout_top_bar">
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/x2"
-                android:backgroundTint="@color/ldr_color_w_opacity_80"
+                app:cardBackgroundColor="@color/card_item_background"
                 app:cardCornerRadius="8dp">
                 <EditText
                     android:id="@+id/edit_title"
@@ -84,7 +118,8 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/card_view_title"
                 android:layout_alignParentBottom="true"
-                android:backgroundTint="@color/ldr_color_w_opacity_80"
+                android:layout_marginTop="@dimen/x3"
+                app:cardBackgroundColor="@color/card_item_background"
                 app:cardCornerRadius="8dp" >
                 <ScrollView
                     android:layout_width="match_parent"
